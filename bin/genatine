@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require 'genatine'
+require 'trollop'
+
+OPTS = Trollop::options do
+  opt :model, "model name", type: String, required: true
+  opt :attributes, "model attributes e.g: firstName:String lastName:String", type: :strings, required: true
+end
+
+puts Genatine::Genatine.generate(OPTS[:model], OPTS[:attributes] || [])
