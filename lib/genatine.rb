@@ -11,7 +11,7 @@ module Genatine
     import play.api.libs.json.Json
 
     case class #{model_name.capitalize}(
-      #{attrs.join(",\n") + ","}
+      #{attrs.map{|x| case_class(x) + ","}.join("\n")}
       id: Option[Long] = None
     ) extends Entity[#{model_name.capitalize}] {
       def withId(id: Long): #{model_name.capitalize} = copy(id = Some(id))
@@ -37,6 +37,15 @@ module Genatine
     end
 
     private
+
+    def self.case_class(attr)
+      name, type = attr.split(':')
+      if type =~ /^Option/
+        "#{name}: #{type} = None"
+      else
+        "#{name}: #{type}"
+      end
+    end
 
     def self.column(attr)
       name, type = attr.split(':')
