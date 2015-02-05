@@ -7,7 +7,7 @@ module Genatine
     sample =<<-EOS
     package models
 
-    import slick.dao.{SlickDao#{model_name.capitalize}, Entity}                                                                                                                                                                                                                                                                 
+    import slick.dao.{SlickDaoProfile, Entity}                                                                                                                                                                                                                                                                 
     import play.api.libs.json.Json
 
     case class #{model_name.capitalize}(
@@ -21,7 +21,7 @@ module Genatine
       implicit val format#{model_name.capitalize} = Json.format[#{model_name.capitalize}]
     }
 
-    trait #{model_name.capitalize}Component  { this: SlickDao#{model_name.capitalize} =>
+    trait #{model_name.capitalize}Component  { this: SlickDaoProfile =>
       import #{model_name.downcase}.simple._
 
       class #{model_name.capitalize.pluralize}Table(tag: Tag) extends BaseTable[#{model_name.capitalize}](tag, "#{model_name.downcase.pluralize}") {
