@@ -23,4 +23,5 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'trollop', '~> 2.1'
   spec.add_runtime_dependency 'activesupport', '~> 4.2'
+  spec.add_runtime_dependency 'colorize', '~> 0.7.5'
 end
