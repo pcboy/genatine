@@ -4,9 +4,11 @@ require 'genatine'
 require 'trollop'
 
 OPTS = Trollop::options do
+  banner "Tool to scaffold play-autosource files (only reactiveMongo supported)"
   opt :model, "model name", type: String, required: true
   opt :attributes, "model attributes e.g: firstName:String lastName:String", type: :strings, required: true
   opt :dry_run, "Show what would be done, without making any changes", default: false
+  opt :controller, "generate a controller or not", default: true
 end
 
 Genatine::Genatine.generate(OPTS[:model] =~ /[A-Z]/ ? OPTS[:model] : OPTS[:model].capitalize,

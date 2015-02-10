@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Genatine::VERSION
   spec.authors       = ["David Hagege"]
   spec.email         = ["david.hagege@gmail.com"]
-  spec.summary       = %q{A gem to generate slick models for play-autosource}
+  spec.summary       = %q{A gem to generate models for play-autosource (with reactiveMongo)}
   spec.description   = %q{}
   spec.homepage      = "http://github.com/pcboy/genatine"
   spec.license       = "MIT"
